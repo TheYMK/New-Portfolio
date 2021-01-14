@@ -1,6 +1,6 @@
 import React from 'react';
 import Register from '../../../components/auth/Register';
-import Breadcrumbs from '../../../components/Breadcrumbs/Breadcrumbs';
+import Breadcrumbs from '../../../components/breadcrumbs/Breadcrumbs';
 import Hero from '../../../components/hero/Hero';
 import Layout from '../../../components/Layout';
 

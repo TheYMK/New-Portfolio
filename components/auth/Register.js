@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { auth } from '../../actions/firebase';
 import { Button } from 'antd';
 import { useSelector } from 'react-redux';
 import Router from 'next/router';
@@ -23,8 +24,27 @@ const Register = () => {
 		[ user ]
 	);
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setValues({ ...values, loading: true });
+
+		try {
+			const config = {
+				url: REGISTER_REDIRECT_URL,
+				handleCodeInApp: true
+			};
+
+			await auth.sendSignInLinkToEmail(email, config);
+			toast.success(`Email is sent to ${email}. Click the link to complete your registration`);
+
+			// save user email in local storage
+			window.localStorage.setItem('emailForRegistration', email);
+
+			setValues({ ...values, email: '', loading: false });
+		} catch (err) {
+			console.log(err);
+			toast.error(err.message);
+		}
 	};
 
 	const registerForm = () => (
