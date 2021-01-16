@@ -41,7 +41,11 @@ const Layout = ({ children, headerStyle, headerActiveLink }) => {
 			<Header headerStyle={headerStyle} headerActiveLink={headerActiveLink} />
 			<ToastContainer />
 			{children}
+
 			<Footer />
+			<a href="#" className="back-to-top">
+				<i className="ri-arrow-up-line" />
+			</a>
 		</React.Fragment>
 	);
 };

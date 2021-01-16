@@ -25,9 +25,10 @@ const Portfolio = ({ projects }) => {
 						<PortfolioItem
 							type={p.category.toLowerCase()}
 							key={p._id}
-							imgSrc={p.images.length > 0 ? p.images[0].url : ''}
+							imgSrc={p.images.length > 0 ? p.images[0].url : '/static/img/noimage.jpg'}
 							title={p.name}
 							category={p.category}
+							slug={p.slug}
 						/>
 					))}
 					{/* <PortfolioItem

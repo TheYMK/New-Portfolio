@@ -1,50 +1,68 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import ManageAccounts from './ManageAccounts';
 import ManageBlogs from './ManageBlogs';
 import ManageOrders from './ManageOrders';
 import ManageProjects from './ManageProjects';
+import { getTotalProjectCount } from '../../actions/project';
 
 const AdminDashboard = () => {
+	const [ totalProjectCount, setTotalProjectCount ] = useState(0);
+
+	useEffect(() => {
+		fetchTotalProjectCount();
+	}, []);
+
+	const fetchTotalProjectCount = () => {
+		getTotalProjectCount()
+			.then((res) => {
+				setTotalProjectCount(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	return (
 		<React.Fragment>
 			<div className="container">
 				<div className="row">
-					<div className="col-sm-4">
+					<div className="col-sm-3">
 						<div className="card">
 							<div className="card-body">
-								<h5 className="card-title">Special title treatment</h5>
-								<p className="card-text">
-									With supporting text below as a natural lead-in to additional content.
-								</p>
-								<a href="#" className="btn btn-primary">
-									Go somewhere
-								</a>
+								<h5 className="card-title">Projects</h5>
+								<h4 className="card-text">
+									<strong>Total Count: {totalProjectCount}</strong>
+								</h4>
 							</div>
 						</div>
 					</div>
-					<div className="col-sm-4">
+					<div className="col-sm-3">
 						<div className="card">
 							<div className="card-body">
-								<h5 className="card-title">Special title treatment</h5>
-								<p className="card-text">
-									With supporting text below as a natural lead-in to additional content.
-								</p>
-								<a href="#" className="btn btn-primary">
-									Go somewhere
-								</a>
+								<h5 className="card-title">Blogs</h5>
+								<h4 className="card-text">
+									<strong>Total Count: {totalProjectCount}</strong>
+								</h4>
 							</div>
 						</div>
 					</div>
-					<div className="col-sm-4">
+					<div className="col-sm-3">
 						<div className="card">
 							<div className="card-body">
-								<h5 className="card-title">Special title treatment</h5>
-								<p className="card-text">
-									With supporting text below as a natural lead-in to additional content.
-								</p>
-								<a href="#" className="btn btn-primary">
-									Go somewhere
-								</a>
+								<h5 className="card-title">Orders</h5>
+								<h4 className="card-text">
+									<strong>Total Count: {totalProjectCount}</strong>
+								</h4>
+							</div>
+						</div>
+					</div>
+					<div className="col-sm-3">
+						<div className="card">
+							<div className="card-body">
+								<h5 className="card-title">Accounts</h5>
+								<h4 className="card-text">
+									<strong>Total Count: {totalProjectCount}</strong>
+								</h4>
 							</div>
 						</div>
 					</div>

@@ -14,6 +14,7 @@ import Contact from '../components/contact/Contact';
 import Footer from '../components/footer/Footer';
 import Layout from '../components/Layout';
 import { getProjects } from '../actions/project';
+import Blog from '../components/blog/Blog';
 
 const Home = ({ projects }) => {
 	return (
@@ -28,6 +29,7 @@ const Home = ({ projects }) => {
 					<Portfolio projects={projects} />
 					{/* <Testimonials /> */}
 					<Pricing />
+					<Blog />
 					<FAQ />
 					<Contact />
 				</main>

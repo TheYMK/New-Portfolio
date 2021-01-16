@@ -32,3 +32,11 @@ export const updateProject = async (slug, project, authtoken) => {
 		}
 	});
 };
+
+export const getTotalProjectCount = async () => {
+	return await axios.get(`${API_URL}/projects/total`);
+};
+
+export const getRelatedProject = async (id) => {
+	return axios.get(`${API_URL}/projects/related/${id}`);
+};
