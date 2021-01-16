@@ -13,8 +13,9 @@ import FAQ from '../components/faq/FAQ';
 import Contact from '../components/contact/Contact';
 import Footer from '../components/footer/Footer';
 import Layout from '../components/Layout';
+import { getProjects } from '../actions/project';
 
-export default function Home() {
+const Home = ({ projects }) => {
 	return (
 		<React.Fragment>
 			<Layout headerStyle="header-transparent" headerActiveLink="home">
@@ -24,7 +25,7 @@ export default function Home() {
 					<Skills />
 					<CTA />
 					<Services />
-					<Portfolio />
+					<Portfolio projects={projects} />
 					{/* <Testimonials /> */}
 					<Pricing />
 					<FAQ />
@@ -33,4 +34,16 @@ export default function Home() {
 			</Layout>
 		</React.Fragment>
 	);
+};
+
+export async function getServerSideProps({ params }) {
+	return getProjects().then((res) => {
+		return {
+			props: {
+				projects: res.data
+			}
+		};
+	});
 }
+
+export default Home;

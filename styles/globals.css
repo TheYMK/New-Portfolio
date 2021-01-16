@@ -717,6 +717,8 @@ section {
   color: #f56a6a;
 }
 
+
+
 @media (max-width: 1024px) {
   .cta {
     background-attachment: scroll;
@@ -1568,8 +1570,8 @@ section {
 #footer .social-links a {
   font-size: 18px;
   display: inline-block;
-  background: #000000;
-  color: #fff;
+  background: #ffffff;
+  color: #f56a6a;
   line-height: 1;
   padding: 8px 0;
   margin-right: 4px;
@@ -1582,7 +1584,7 @@ section {
 
 #footer .social-links a:hover {
   background: #ffffff;
-  color: #f56a6a;
+  color: #000;
   text-decoration: none;
 }
 
@@ -1593,3 +1595,132 @@ section {
 #footer .credits {
   font-size: 13px;
 }
+
+/* 
+---------------------------------------------
+preloader
+--------------------------------------------- 
+*/
+#preloader {
+  overflow: hidden;
+  background-image: linear-gradient(135deg, #f25a46 0%, #eb444d 100%);
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  position: fixed;
+  z-index: 9999;
+  color: #fff;
+}
+
+#preloader .jumper {
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  display: block;
+  position: absolute;
+  margin: auto;
+  width: 50px;
+  height: 50px;
+}
+
+#preloader .jumper > div {
+  background-color: #fff;
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  position: absolute;
+  opacity: 0;
+  width: 50px;
+  height: 50px;
+  -webkit-animation: jumper 1s 0s linear infinite;
+  animation: jumper 1s 0s linear infinite;
+}
+
+#preloader .jumper > div:nth-child(2) {
+  -webkit-animation-delay: 0.33333s;
+  animation-delay: 0.33333s;
+}
+
+#preloader .jumper > div:nth-child(3) {
+  -webkit-animation-delay: 0.66666s;
+  animation-delay: 0.66666s;
+}
+
+@-webkit-keyframes jumper {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+@keyframes jumper {
+  0% {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* 
+---------------------------------------------
+Manage Project
+--------------------------------------------- 
+*/
+
+.project-btn{
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  color: #fff;
+  background: #000000;
+}
+
+.project-btn:hover {
+  background: #f56a6a;
+  color: #fff;
+}
+
+/* .btnSmall {
+  font-family: "Raleway", sans-serif;
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 12px 30px;
+  border-radius: 50px;
+  transition: 0.5s;
+  margin: 10px;
+  color: #fff;
+  background: #r;
+}
+.btnSmall:hover {
+  background: #f56a6a;
+  color: #fff;
+} */

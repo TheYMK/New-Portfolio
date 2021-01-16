@@ -1,7 +1,8 @@
 import React from 'react';
 import PortfolioItem from './PortfolioItem';
+import { getProjects } from '../../actions/project';
 
-const Portfolio = () => {
+const Portfolio = ({ projects }) => {
 	return (
 		<section id="portfolio" className="portfolio">
 			<div className="container">
@@ -20,7 +21,16 @@ const Portfolio = () => {
 				</ul>
 
 				<div className="row portfolio-container" data-aos="fade-up">
-					<PortfolioItem
+					{projects.map((p) => (
+						<PortfolioItem
+							type={p.category.toLowerCase()}
+							key={p._id}
+							imgSrc={p.images.length > 0 ? p.images[0].url : ''}
+							title={p.name}
+							category={p.category}
+						/>
+					))}
+					{/* <PortfolioItem
 						type={'design'}
 						imgSrc={'/static/img/portfolio/portfolio-2.jpg'}
 						title="E.M.S"
@@ -37,7 +47,7 @@ const Portfolio = () => {
 						imgSrc={'/static/img/portfolio/portfolio-3.jpg'}
 						title="E.M.S"
 						category="Mobile"
-					/>
+					/> */}
 				</div>
 			</div>
 		</section>

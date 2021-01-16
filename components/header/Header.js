@@ -25,9 +25,7 @@ const Header = ({ headerStyle, headerActiveLink }) => {
 			<div className="container d-flex align-items-center">
 				<div className="logo mr-auto">
 					<h1 className="text-light">
-						<Link href="/">
-							<a>Kaym.js</a>
-						</Link>
+						<a href="/">Kaym.js</a>
 					</h1>
 				</div>
 
@@ -75,19 +73,26 @@ const Header = ({ headerStyle, headerActiveLink }) => {
 
 						{user && (
 							<li className="drop-down">
-								<a href="">{user.email && user.email.split('@')[0]}</a>
+								<Link href="">
+									<a>{user.email && user.email.split('@')[0]}</a>
+								</Link>
+
 								<ul>
 									{user &&
 									user.role === 'subscriber' && (
 										<li>
-											<a href="/user/dashboard">Dashboard</a>
+											<Link href="/user/dashboard">
+												<a>Dashboard</a>
+											</Link>
 										</li>
 									)}
 
 									{user &&
 									user.role === 'admin' && (
 										<li>
-											<a href="/admin/dashboard">Dashboard</a>
+											<Link href="/admin/dashboard">
+												<a>Admin Dashboard</a>
+											</Link>
 										</li>
 									)}
 
