@@ -3,7 +3,18 @@ import { Modal, Button } from 'antd';
 import FileUpload from '../dashboard/FileUpload';
 
 function ProjectCreateModal({ isModalVisible, handleOk, handleCancel, values, setValues, loading, setLoading }) {
-	const { name, category, description, images, client, url, date, categories } = values;
+	const {
+		name,
+		category,
+		description_frontend,
+		description_backend,
+		description_challenges,
+		images,
+		client,
+		url,
+		date,
+		categories
+	} = values;
 
 	return (
 		<Modal
@@ -87,15 +98,39 @@ function ProjectCreateModal({ isModalVisible, handleOk, handleCancel, values, se
 							</select>
 						</div>
 						<div className="form-group col-md-12">
-							<label htmlFor="description" className="form-label">
-								Description
+							<label htmlFor="description_frontend" className="form-label">
+								Front-end Description
 							</label>
 							<textarea
 								className="form-control"
-								id="description"
+								id="description_frontend"
 								rows="3"
-								value={description}
-								onChange={(e) => setValues({ ...values, description: e.target.value })}
+								value={description_frontend}
+								onChange={(e) => setValues({ ...values, description_frontend: e.target.value })}
+							/>
+						</div>
+						<div className="form-group col-md-12">
+							<label htmlFor="description_backend" className="form-label">
+								Back-end Description
+							</label>
+							<textarea
+								className="form-control"
+								id="description_backend"
+								rows="3"
+								value={description_backend}
+								onChange={(e) => setValues({ ...values, description_backend: e.target.value })}
+							/>
+						</div>
+						<div className="form-group col-md-12">
+							<label htmlFor="description_challenges" className="form-label">
+								Challenges Description
+							</label>
+							<textarea
+								className="form-control"
+								id="description_challenges"
+								rows="3"
+								value={description_challenges}
+								onChange={(e) => setValues({ ...values, description_challenges: e.target.value })}
 							/>
 						</div>
 					</div>

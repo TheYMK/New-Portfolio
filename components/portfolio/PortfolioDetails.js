@@ -62,7 +62,16 @@ const PortfolioDetails = ({ project }) => {
 
 				<div className="portfolio-description">
 					<h2>About this project</h2>
-					<p>{project.description}</p>
+					<h4>Front-end</h4>
+					<p>{project.description_frontend}</p>
+				</div>
+				<div className="portfolio-description">
+					<h4>Back-end</h4>
+					<p>{project.description_backend}</p>
+				</div>
+				<div className="portfolio-description">
+					<h4>Challenges</h4>
+					<p>{project.description_challenges}</p>
 				</div>
 			</div>
 		</section>

@@ -12,7 +12,9 @@ const ProjectUpdatePage = ({ project }) => {
 	const [ values, setValues ] = useState({
 		name: project.name,
 		category: project.category,
-		description: project.description,
+		description_frontend: project.description_frontend,
+		description_backend: project.description_backend,
+		description_challenges: project.description_challenges,
 		images: project.images,
 		client: project.client,
 		url: project.url,
@@ -21,7 +23,17 @@ const ProjectUpdatePage = ({ project }) => {
 	const [ categories, setCategories ] = useState([ 'Web', 'Mobile', 'Design' ]);
 	const [ loading, setLoading ] = useState(false);
 
-	const { name, category, description, images, client, url, date } = values;
+	const {
+		name,
+		category,
+		description_frontend,
+		description_backend,
+		description_challenges,
+		images,
+		client,
+		url,
+		date
+	} = values;
 
 	const { user } = useSelector((state) => ({ ...state }));
 
@@ -118,15 +130,39 @@ const ProjectUpdatePage = ({ project }) => {
 					</select>
 				</div>
 				<div className="form-group col-md-12">
-					<label htmlFor="description" className="form-label">
-						Description
+					<label htmlFor="description_frontend" className="form-label">
+						Front-end Description
 					</label>
 					<textarea
 						className="form-control"
-						id="description"
+						id="description_frontend"
 						rows="3"
-						value={description}
-						onChange={(e) => setValues({ ...values, description: e.target.value })}
+						value={description_frontend}
+						onChange={(e) => setValues({ ...values, description_frontend: e.target.value })}
+					/>
+				</div>
+				<div className="form-group col-md-12">
+					<label htmlFor="description_backend" className="form-label">
+						Back-end Description
+					</label>
+					<textarea
+						className="form-control"
+						id="description_backend"
+						rows="3"
+						value={description_backend}
+						onChange={(e) => setValues({ ...values, description_backend: e.target.value })}
+					/>
+				</div>
+				<div className="form-group col-md-12">
+					<label htmlFor="description_challenges" className="form-label">
+						Challenges Description
+					</label>
+					<textarea
+						className="form-control"
+						id="description_challenges"
+						rows="3"
+						value={description_challenges}
+						onChange={(e) => setValues({ ...values, description_challenges: e.target.value })}
 					/>
 				</div>
 			</div>
