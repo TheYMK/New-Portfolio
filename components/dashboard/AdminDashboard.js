@@ -4,18 +4,31 @@ import ManageBlogs from './ManageBlogs';
 import ManageOrders from './ManageOrders';
 import ManageProjects from './ManageProjects';
 import { getTotalProjectCount } from '../../actions/project';
+import { getTotalBlogCount } from '../../actions/blog';
 
 const AdminDashboard = () => {
 	const [ totalProjectCount, setTotalProjectCount ] = useState(0);
+	const [ totalBlogCount, setTotalBlogCount ] = useState(0);
 
 	useEffect(() => {
 		fetchTotalProjectCount();
+		fetchTotalBlogCount();
 	}, []);
 
 	const fetchTotalProjectCount = () => {
 		getTotalProjectCount()
 			.then((res) => {
 				setTotalProjectCount(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
+	const fetchTotalBlogCount = () => {
+		getTotalBlogCount()
+			.then((res) => {
+				setTotalBlogCount(res.data);
 			})
 			.catch((err) => {
 				console.log(err);
@@ -41,7 +54,7 @@ const AdminDashboard = () => {
 							<div className="card-body">
 								<h5 className="card-title">Blogs</h5>
 								<h4 className="card-text">
-									<strong>Total Count: {totalProjectCount}</strong>
+									<strong>Total Count: {totalBlogCount}</strong>
 								</h4>
 							</div>
 						</div>

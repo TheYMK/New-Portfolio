@@ -1,5 +1,5 @@
 import 'antd/dist/antd.css';
-
+import '../node_modules/react-quill/dist/quill.snow.css';
 import 'react-toastify/dist/ReactToastify.css';
 import '../styles/globals.css';
 import { createStore } from 'redux';
