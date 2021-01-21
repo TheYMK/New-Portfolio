@@ -14,6 +14,8 @@ const Pricing = () => {
 						<div className="box" data-aos="zoom-in">
 							<h3>Basic</h3>
 							<p>Suited for personal websites, or landing pages.</p>
+							<p style={{ color: '#f56a6a' }}>*Hosting fee not included*</p>
+
 							<h4>
 								<sup>$</sup>150<span />
 							</h4>
@@ -44,6 +46,7 @@ const Pricing = () => {
 						<div className="box featured" data-aos="zoom-in" data-aos-delay="100">
 							<h3>Standard</h3>
 							<p>Suited for small businesses.</p>
+							<p style={{ color: '#f56a6a' }}>*Hosting fee not included*</p>
 							<h4>
 								<sup>$</sup>625
 							</h4>
@@ -74,6 +77,7 @@ const Pricing = () => {
 						<div className="box" data-aos="zoom-in" data-aos-delay="200">
 							<h3>Premium</h3>
 							<p>Suited for enterprises or corporations.</p>
+							<p style={{ color: '#f56a6a' }}>*Hosting fee not included*</p>
 							<h4>
 								<sup>$</sup>1200
 							</h4>

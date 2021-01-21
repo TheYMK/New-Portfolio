@@ -14,9 +14,10 @@ import Contact from '../components/contact/Contact';
 import Footer from '../components/footer/Footer';
 import Layout from '../components/Layout';
 import { getProjects } from '../actions/project';
+import { getBlogsWithCategoriesAndTags } from '../actions/blog';
 import Blog from '../components/blog/Blog';
 
-const Home = ({ projects }) => {
+const Home = ({ projects, blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip }) => {
 	return (
 		<React.Fragment>
 			<Layout headerStyle="header-transparent" headerActiveLink="home">
@@ -29,7 +30,14 @@ const Home = ({ projects }) => {
 					<Portfolio projects={projects} />
 					{/* <Testimonials /> */}
 					<Pricing />
-					<Blog />
+					<Blog
+						blogs={blogs}
+						categories={categories}
+						tags={tags}
+						totalBlogs={totalBlogs}
+						blogsLimit={blogsLimit}
+						blogsSkip={blogsSkip}
+					/>
 					<FAQ />
 					<Contact />
 				</main>
@@ -39,12 +47,23 @@ const Home = ({ projects }) => {
 };
 
 export async function getServerSideProps({ params }) {
+	let skip = 0;
+	let limit = 4;
+
 	return getProjects().then((res) => {
-		return {
-			props: {
-				projects: res.data
-			}
-		};
+		return getBlogsWithCategoriesAndTags(skip, limit).then((result) => {
+			return {
+				props: {
+					projects: res.data,
+					blogs: result.data.blogs,
+					categories: result.data.categories,
+					tags: result.data.tags,
+					totalBlogs: result.data.size,
+					blogsLimit: limit,
+					blogsSkip: skip
+				}
+			};
+		});
 	});
 }
 

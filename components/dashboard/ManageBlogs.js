@@ -7,7 +7,7 @@ import { withRouter } from 'next/router'; // so we have access to router props (
 import { useSelector } from 'react-redux';
 import { getCategories } from '../../actions/category';
 import { getTags } from '../../actions/tag';
-import { createBlog, getBlogs } from '../../actions/blog';
+import { createBlog, getBlogs, removeBlog } from '../../actions/blog';
 import BlogCreateModal from '../modal/BlogCreateModal';
 import { toast } from 'react-toastify';
 
@@ -98,6 +98,18 @@ const ManageBlogs = ({ router }) => {
 			});
 	};
 
+	const deleteBlog = (slug) => {
+		removeBlog(slug, user.token)
+			.then((res) => {
+				toast.success('Blog deleted successfully');
+				setReload(!reload);
+			})
+			.catch((err) => {
+				console.log(err);
+				toast.error(err);
+			});
+	};
+
 	const showBlogs = () => (
 		<table className="table">
 			<thead>
@@ -115,11 +127,25 @@ const ManageBlogs = ({ router }) => {
 					<tr key={i}>
 						<th scope="row">{i + 1}</th>
 						<td>{b.title}</td>
-						<td>{b.categories.map((c, j) => <div className="badge bg-info mr-2">{c.name}</div>)}</td>
-						<td>{b.tags.map((t, j) => <div className="badge bg-success mr-2">{t.name}</div>)}</td>
+						<td>
+							{b.categories.map((c, j) => (
+								<div className="badge bg-info mr-2" key={j}>
+									{c.name}
+								</div>
+							))}
+						</td>
+						<td>
+							{b.tags.map((t, j) => (
+								<div className="badge bg-success mr-2" key={j}>
+									{t.name}
+								</div>
+							))}
+						</td>
 						<td>{new Date(b.createdAt).toLocaleDateString('en-US')}</td>
 						<td>
-							<button className="badge bg-danger btn">Delete</button>
+							<button className="badge bg-danger btn" onClick={() => deleteBlog(b.slug)}>
+								Delete
+							</button>
 							<br />
 							<Link href={`/admin/blog/slug`}>
 								<a className="badge bg-warning btn">Update</a>
@@ -138,8 +164,9 @@ const ManageBlogs = ({ router }) => {
 	const handleOk = (f, i) => {
 		// append images to formdata before sending
 		// formData.set(images, i);
+		console.log(i);
 		setLoading(true);
-		f.set('images', i);
+		f.set('image', i[0].url);
 
 		createBlog(f, user.token)
 			.then((res) => {

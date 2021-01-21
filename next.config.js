@@ -6,7 +6,11 @@ module.exports = withCSS({
 	publicRuntimeConfig: {
 		REGISTER_REDIRECT_URL: 'http://localhost:3000/auth/register/complete',
 		FORGOT_PASSWORD_REDIRECT_URL: 'http://localhost:3000/auth/login',
-		API_URL: 'http://localhost:8000/api'
+		API_URL: 'http://localhost:8000/api',
+		DOMAIN_DEVELOPMENT: 'http://localhost:3000',
+		PRODUCTION: false,
+		DOMAIN_PRODUCTION: 'https://kaymkassai.tech',
+		DISQUS_SHORTNAME: 'portfolio-vbpayydtea'
 	}
 });
 
