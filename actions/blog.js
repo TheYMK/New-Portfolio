@@ -41,3 +41,11 @@ export const removeBlog = async (slug, authtoken) => {
 		}
 	});
 };
+
+export const updateBlog = async (slug, blog, authtoken) => {
+	return await axios.put(`${API_URL}/blog/${slug}`, blog, {
+		headers: {
+			authtoken: authtoken
+		}
+	});
+};

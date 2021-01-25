@@ -42,17 +42,17 @@ const ManageBlogs = ({ router }) => {
 		title: ''
 	});
 	const [ loading, setLoading ] = useState(false);
-
 	const { user } = useSelector((state) => ({ ...state }));
 
 	useEffect(
 		() => {
 			setValues({ ...values, formData: new FormData() });
+			// console.log(values.formData);
 			fetchBlogs();
 			initCategories();
 			initTags();
 		},
-		[ reload ]
+		[ router, reload ]
 	);
 
 	const fetchBlogs = () => {
@@ -147,7 +147,7 @@ const ManageBlogs = ({ router }) => {
 								Delete
 							</button>
 							<br />
-							<Link href={`/admin/blog/slug`}>
+							<Link href={`/admin/blog/${b.slug}`}>
 								<a className="badge bg-warning btn">Update</a>
 							</Link>
 						</td>
@@ -164,9 +164,15 @@ const ManageBlogs = ({ router }) => {
 	const handleOk = (f, i) => {
 		// append images to formdata before sending
 		// formData.set(images, i);
-		console.log(i);
 		setLoading(true);
+
+		if (!i) {
+			setValues({ ...values, error: 'You need to upload at least one image' });
+			return;
+		}
 		f.set('image', i[0].url);
+
+		// console.log([ ...f ]);
 
 		createBlog(f, user.token)
 			.then((res) => {
