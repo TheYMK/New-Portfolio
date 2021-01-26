@@ -61,7 +61,7 @@ const BlogDetails = ({ blog }) => {
 					</div>
 				</div>
 
-				<div className="portfolio-description">{renderHTML(blog.body)}</div>
+				<div className="portfolio-description ">{renderHTML(blog.body)}</div>
 			</div>
 		</section>
 	);

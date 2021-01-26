@@ -49,3 +49,7 @@ export const updateBlog = async (slug, blog, authtoken) => {
 		}
 	});
 };
+
+export const getRelatedBlogs = async (blog) => {
+	return await axios.post(`${API_URL}/blog/related`, { blog });
+};

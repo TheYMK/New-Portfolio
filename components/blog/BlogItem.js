@@ -15,7 +15,7 @@ const BlogItem = ({ blog }) => {
 					/>
 					<div className="social">
 						<Link href={`/blog/${blog.slug}`}>
-							<a>
+							<a style={{ cursor: 'pointer' }}>
 								<i className="icofont-eye" />
 							</a>
 						</Link>
