@@ -1,6 +1,55 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import Router from 'next/router';
 
 const Pricing = () => {
+	const dispatch = useDispatch();
+	const { user, order_type } = useSelector((state) => ({ ...state }));
+
+	const handleBasicPlanClick = () => {
+		localStorage.setItem('order_type', 'basic');
+
+		dispatch({
+			type: 'SET_ORDER_TYPE',
+			payload: 'basic'
+		});
+
+		Router.push('/order/completion');
+	};
+
+	const handleStandardPlanClick = () => {
+		localStorage.setItem('order_type', 'standard');
+
+		dispatch({
+			type: 'SET_ORDER_TYPE',
+			payload: 'standard'
+		});
+
+		Router.push('/order/completion');
+	};
+
+	const handlePremiumPlanClick = () => {
+		localStorage.setItem('order_type', 'premium');
+
+		dispatch({
+			type: 'SET_ORDER_TYPE',
+			payload: 'premium'
+		});
+
+		Router.push('/order/completion');
+	};
+
+	const handleUltimatePlanClick = () => {
+		localStorage.setItem('order_type', 'ultimate');
+
+		dispatch({
+			type: 'SET_ORDER_TYPE',
+			payload: 'ultimate'
+		});
+
+		Router.push('/order/completion');
+	};
+
 	return (
 		<section id="pricing" className="pricing">
 			<div className="container">
@@ -35,7 +84,7 @@ const Pricing = () => {
 								<li>Delivery Time: 5 to 7 days</li>
 							</ul>
 							<div className="btn-wrap">
-								<a href="#" className="btn-buy">
+								<a className="btn-buy" onClick={handleBasicPlanClick}>
 									Select
 								</a>
 							</div>
@@ -66,7 +115,7 @@ const Pricing = () => {
 								<li>Delivery Time: 10 to 12 days</li>
 							</ul>
 							<div className="btn-wrap">
-								<a href="#" className="btn-buy">
+								<a className="btn-buy" onClick={handleStandardPlanClick}>
 									Select
 								</a>
 							</div>
@@ -97,7 +146,7 @@ const Pricing = () => {
 								<li>Delivery Time: 15 to 17 days</li>
 							</ul>
 							<div className="btn-wrap">
-								<a href="#" className="btn-buy">
+								<a className="btn-buy" onClick={handlePremiumPlanClick}>
 									Select
 								</a>
 							</div>
@@ -116,7 +165,7 @@ const Pricing = () => {
 								define your goals.
 							</p>
 							<div className="btn-wrap">
-								<a href="#" className="btn-buy">
+								<a className="btn-buy" onClick={handleUltimatePlanClick}>
 									Ask for quotation
 								</a>
 							</div>
