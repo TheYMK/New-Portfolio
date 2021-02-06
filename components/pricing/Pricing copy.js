@@ -58,48 +58,29 @@ const Pricing = () => {
 					<p>My Prices</p>
 				</div>
 
-				<div className="card text-center m-5 promotion_card">
-					<div className="card-body">
-						<i className="ri-alarm-warning-fill" /> Get 1 year free <span>HOSTING</span> +{' '}
-						<span> .COM DOMAIN NAME</span> + <span>PRO EMAIL</span> + <span>SSL CERTIFICATE</span> on all
-						packages
-					</div>
-				</div>
-
 				<div className="row">
 					<div className="col-lg-3 col-md-6">
 						<div className="box" data-aos="zoom-in">
 							<h3>Basic</h3>
-							<p>Suited for potfolio websites, or landing pages.</p>
-							{/* <p style={{ color: '#f56a6a' }}>*Hosting fee not included*</p> */}
+							<p>Suited for personal websites, or landing pages.</p>
+							<p style={{ color: '#f56a6a' }}>*Hosting fee not included*</p>
 
 							<h4>
-								&#8804; <sup>$</sup>360<span />
+								<sup>$</sup> &#8804; 250<span />
 							</h4>
 							<ul>
 								<li>Design Customization</li>
 								<li>Responsive Design</li>
 								<li>Include Source Code</li>
-								<li>Custom functionalities: 3 max</li>
-								<li className="na">Google Analytics</li>
-								<li>Newsletter</li>
-								<li>Contact Forms</li>
-								<li className="na">Admin Dashboard</li>
+								<li>Custom functionalities</li>
 								<li className="na">Authentication</li>
 								<li className="na">Database</li>
-								<li className="na">PayPal Payment</li>
-								<li className="na">Pro Email</li>
-								<li>
-									Domain Name: <strong style={{ color: '#f56a6a' }}>1 year free</strong>
-								</li>
-								<li>
-									SSL Certificate: <strong style={{ color: '#f56a6a' }}>1 year free</strong>
-								</li>
-								<li>
-									Hosting: <strong style={{ color: '#f56a6a' }}>1 year free</strong>
-								</li>
-								<li>Number of Pages: up to 5</li>
-								<li>Revisions: up to 5</li>
+								<li className="na">Payment method</li>
+								<li className="na">Custom content upload</li>
+								<li className="na">SEO</li>
+								<li>Help for hosting</li>
+								<li>Number of Pages: up to 4</li>
+								<li>Revisions: up to 4</li>
 								<li>Delivery Time: 5 to 7 days</li>
 							</ul>
 							<div className="btn-wrap">
@@ -113,35 +94,22 @@ const Pricing = () => {
 					<div className="col-lg-3 col-md-6 mt-4 mt-md-0">
 						<div className="box featured" data-aos="zoom-in" data-aos-delay="100">
 							<h3>Standard</h3>
-							<p>Suited for small businesses or ecommerce.</p>
-							{/* <p style={{ color: '#f56a6a' }}>*Hosting fee not included*</p> */}
+							<p>Suited for small businesses.</p>
+							<p style={{ color: '#f56a6a' }}>*Hosting fee not included*</p>
 							<h4>
-								&#8804; <sup>$</sup>825
+								<sup>$</sup> &#8804; 625
 							</h4>
 							<ul>
 								<li>Design Customization</li>
 								<li>Responsive Design</li>
 								<li>Include Source Code</li>
-								<li>Custom functionalities: 5 max</li>
-								<li>Google Analytics</li>
-								<li>Newsletter</li>
-								<li>Contact Forms</li>
-								<li className="">Admin Dashboard</li>
-								<li className="">Authentication</li>
-								<li className="">Database</li>
-								<li className="">PayPal Payment</li>
-								<li className="">
-									Pro Email: <strong style={{ color: '#f56a6a' }}>1 year free</strong>
-								</li>
-								<li>
-									Domain Name: <strong style={{ color: '#f56a6a' }}>1 year free</strong>
-								</li>
-								<li>
-									SSL Certificate: <strong style={{ color: '#f56a6a' }}>1 year free</strong>
-								</li>
-								<li>
-									Hosting: <strong style={{ color: '#f56a6a' }}>1 year free</strong>
-								</li>
+								<li>Custom functionalities</li>
+								<li>Authentication</li>
+								<li>Database</li>
+								<li className="na">Payment method</li>
+								<li>Custom content upload</li>
+								<li className="na">SEO</li>
+								<li>Help for hosting</li>
 								<li>Number of Pages: up to 10</li>
 								<li>Revisions: up to 10</li>
 								<li>Delivery Time: 10 to 12 days</li>
@@ -158,37 +126,24 @@ const Pricing = () => {
 						<div className="box" data-aos="zoom-in" data-aos-delay="200">
 							<h3>Premium</h3>
 							<p>Suited for enterprises or corporations.</p>
-							{/* <p style={{ color: '#f56a6a' }}>*Hosting fee not included*</p> */}
+							<p style={{ color: '#f56a6a' }}>*Hosting fee not included*</p>
 							<h4>
-								&#8804; <sup>$</sup>2499
+								<sup>$</sup> &#8804; 1200
 							</h4>
 							<ul>
 								<li>Design Customization</li>
 								<li>Responsive Design</li>
 								<li>Include Source Code</li>
-								<li>Custom functionalities: 10 max</li>
-								<li>Google Analytics</li>
-								<li>Newsletter</li>
-								<li>Contact Forms</li>
-								<li className="">Admin Dashboard</li>
-								<li className="">Authentication</li>
-								<li className="">Database</li>
-								<li className="">PayPal Payment</li>
-								<li className="">
-									Pro Email: <strong style={{ color: '#f56a6a' }}>1 year free</strong>
-								</li>
-								<li>
-									Domain Name: <strong style={{ color: '#f56a6a' }}>1 year free</strong>
-								</li>
-								<li>
-									SSL Certificate: <strong style={{ color: '#f56a6a' }}>1 year free</strong>
-								</li>
-								<li>
-									Hosting: <strong style={{ color: '#f56a6a' }}>1 year free</strong>
-								</li>
+								<li>Custom functionalities</li>
+								<li>Authentication</li>
+								<li>Database</li>
+								<li>Payment method</li>
+								<li>Custom content upload</li>
+								<li>SEO</li>
+								<li>Help for hosting</li>
 								<li>Number of Pages: up to 20</li>
-								<li>Revisions: unlimited</li>
-								<li>Delivery Time: 20 to 25 days</li>
+								<li>Revisions: up to 20</li>
+								<li>Delivery Time: 15 to 17 days</li>
 							</ul>
 							<div className="btn-wrap">
 								<a className="btn-buy" onClick={handlePremiumPlanClick}>
@@ -206,13 +161,12 @@ const Pricing = () => {
 								<sup>$</sup>-
 							</h4>
 							<p>
-								I also offer you a totally customized package, that you can select by your own. If you
-								need to add some extra feature and acquire some other service (like logo design or
-								business card design), then I provide flexibility with this option.
+								If your project don't fit in other plans, feel free to reach out to me so we can better
+								define your goals.
 							</p>
 							<div className="btn-wrap">
 								<a className="btn-buy" onClick={handleUltimatePlanClick}>
-									Select
+									Request a quote
 								</a>
 							</div>
 						</div>

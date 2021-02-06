@@ -166,7 +166,7 @@ const BasicPlanOrderCompletion = () => {
 				<div className="col-md-12 mt-4">
 					<label htmlFor="features_description">
 						Is there anything in particular you want on your site? Describe all the features you want your
-						website to have.
+						website to have. (You have a maximum of 3 custom features)
 					</label>
 					<textarea
 						className="form-control"
@@ -269,7 +269,7 @@ const BasicPlanOrderCompletion = () => {
 				fix.
 			</p>
 			<p className="mt-4">
-				<strong>Payment method:</strong> Paypal, Wechat, Alipay and Credit Card
+				<strong>Payment method:</strong> Paypal, Wechat, Alipay or Credit Card
 			</p>
 		</div>
 	);
@@ -308,7 +308,9 @@ const BasicPlanOrderCompletion = () => {
 							<td>
 								<CheckCircleIcon className="text-success" />
 							</td>
-							<td>Your website will look amazing on all screen sizes.</td>
+							<td>
+								Your website will look amazing on multiple screen sizes (desktop, mobile and tablet).
+							</td>
 						</tr>
 						<tr>
 							<td>Source Code</td>
@@ -325,6 +327,37 @@ const BasicPlanOrderCompletion = () => {
 							<td>
 								I give you the possibility to list out all the features you want me to implement on your
 								website.
+							</td>
+						</tr>
+						<tr>
+							<td>Google Analytics</td>
+							<td>
+								<CheckCircleIcon className="text-success" />
+							</td>
+							<td>Google Analytics is not included in this package.</td>
+						</tr>
+						<tr>
+							<td>Newsletter</td>
+							<td>
+								<CheckCircleIcon className="text-success" />
+							</td>
+							<td>I'll give you the right tools to communicate regularly with your subscribers</td>
+						</tr>
+						<tr>
+							<td>Contact Forms</td>
+							<td>
+								<CheckCircleIcon className="text-success" />
+							</td>
+							<td>Your visitors will be able to get in touch from within your website.</td>
+						</tr>
+						<tr>
+							<td>Admin Dashboard</td>
+							<td>
+								<CancelIcon className="text-danger" />
+							</td>
+							<td>
+								Since there is no data persistance, there is no need for an admin dashboard for your
+								type of project.
 							</td>
 						</tr>
 						<tr>
@@ -345,50 +378,50 @@ const BasicPlanOrderCompletion = () => {
 							<td>Your website will not have any data storage system.</td>
 						</tr>
 						<tr>
-							<td>Payment method</td>
+							<td>PayPal Payment</td>
 							<td>
 								<CancelIcon className="text-danger" />
 							</td>
 							<td>No payment system will be integrated with your website.</td>
 						</tr>
+
 						<tr>
-							<td>Custom content upload</td>
+							<td>Pro Email</td>
 							<td>
 								<CancelIcon className="text-danger" />
 							</td>
-							<td>
-								I will not write the actual content of your website. You have to provide everything
-								(text, images, videos, etc...).
-							</td>
+							<td>The 1 year free pro email service is not available for this package.</td>
 						</tr>
 						<tr>
-							<td>SEO</td>
-							<td>
-								<CancelIcon className="text-danger" />
-							</td>
-							<td>I will not boost your website presence in relevant online search results.</td>
-						</tr>
-						<tr>
-							<td>Help for hosting</td>
+							<td>Domain Name</td>
 							<td>
 								<CheckCircleIcon className="text-success" />
 							</td>
+							<td>I will setup a 1 year free .COM domain name for your website.</td>
+						</tr>
+						<tr>
+							<td>SSL Certficate</td>
 							<td>
-								I do not provide hosting services but If you need my help to host your website, that
-								will cost you slightly more (not much, depending on your hosting provider choice).{' '}
+								<CheckCircleIcon className="text-success" />
 							</td>
+							<td>I will secure your website by providing a 1 year free SSL Certificate.</td>
+						</tr>
+						<tr>
+							<td>Hosting</td>
+							<td>
+								<CheckCircleIcon className="text-success" />
+							</td>
+							<td>I will freely host your website on one of my servers for 1 year.</td>
 						</tr>
 						<tr>
 							<td>Number of Pages</td>
 							<td />
-							<td>Your website should not exceed 4 pages.</td>
+							<td>Your website should not exceed 5 pages.</td>
 						</tr>
 						<tr>
 							<td>Revisions</td>
 							<td />
-							<td>
-								After the final deployment of your website you can make up to 4 modifications request.
-							</td>
+							<td>You can make up to 5 modifications request.</td>
 						</tr>
 						<tr>
 							<td>Delivery time</td>
@@ -413,9 +446,6 @@ const BasicPlanOrderCompletion = () => {
 		try {
 			const res = await createOrder(values);
 			console.log(res.data);
-			toast.success(
-				'Your order has been placed. I will review your submission and reach out to you as soon as possible. Thank you so much for trusting me for your project.'
-			);
 
 			setValues({
 				...values,
@@ -438,7 +468,7 @@ const BasicPlanOrderCompletion = () => {
 			);
 		} catch (err) {
 			console.log(err);
-			toast.error('Oops! Something wrong happened. Make sure you to fill in all required fields');
+			toast.error('Oops! Something went wrong. Make sure you to fill in all required fields');
 		}
 		setActiveStep(0);
 	};
@@ -455,6 +485,16 @@ const BasicPlanOrderCompletion = () => {
 						accomplish all our goals, please help me get to know you, your business, and the project more
 						thoroughly.
 					</p>
+					<div className="card text-center m-5 promotion_card">
+						<div className="card-body">
+							<p className="">
+								<i className="ri-alert-fill" /> If what you're looking to build is a portfolio website
+								to showcase your skills or your services, a landing page for your business, a
+								presentation website, a customized template, or any type of static website, then this
+								package is for you.
+							</p>
+						</div>
+					</div>
 				</div>
 				<Stepper activeStep={activeStep} alternativeLabel>
 					{steps.map((label) => (
@@ -475,7 +515,7 @@ const BasicPlanOrderCompletion = () => {
 								</p>
 							</div>
 							<Button onClick={handleComplete} style={{ backgroundColor: '#000', color: '#fff' }}>
-								Complete
+								Request Quotation
 							</Button>
 						</div>
 					) : (

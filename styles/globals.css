@@ -1,4 +1,4 @@
-
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -1110,6 +1110,21 @@ section {
   padding: 1px 0 3px 0;
   background: #f56a6a;
   color: #fff;
+}
+
+.promotion_card {
+  background-color: #000;
+  color: #fff;
+  font-weight: 600;
+  font-size: 20px;
+  /* font-family: 'PT Sans', sans-serif; */
+}
+
+.promotion_card span {
+  color: #f56a6a
+}
+.promotion_card i {
+  color: #f0e21e
 }
 
 /*--------------------------------------------------------------

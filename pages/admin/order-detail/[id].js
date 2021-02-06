@@ -1,0 +1,258 @@
+import React, { useEffect, useState } from 'react';
+import { getSingleOrder, updateOrderStatus, updateOrderPrice, removeOrder } from '../../../actions/order';
+import Admin from '../../../components/auth/Admin';
+import Breadcrumbs from '../../../components/breadcrumbs/Breadcrumbs';
+import Layout from '../../../components/Layout';
+import moment from 'moment';
+import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import Router from 'next/router';
+
+const OrderDetailPage = ({ params }) => {
+	const [ order, setOrder ] = useState({});
+	const [ order_price, setOrderPrice ] = useState('');
+
+	// const [ order_status, setOrderStatus ] = useState('');
+	const [ allStatus, setAllStatus ] = useState([
+		'In Review',
+		'Approved',
+		'Processing',
+		'On Hold',
+		'Cancelled',
+		'Completed'
+	]);
+	const { user } = useSelector((state) => ({ ...state }));
+	const [ reload, setReload ] = useState(false);
+
+	useEffect(
+		() => {
+			fetchOrder();
+		},
+		[ reload ]
+	);
+
+	const fetchOrder = async () => {
+		try {
+			const res = await getSingleOrder(params.id);
+			console.log(`Refetching Order: ${JSON.stringify(res.data)}`);
+			setOrder(res.data);
+			setOrderPrice(res.data.order_price);
+		} catch (err) {
+			toast.error('Failed to load order data');
+		}
+	};
+
+	const showOrderDetails = () => (
+		<React.Fragment>
+			<div className="mt-5">
+				<h4>What to know about this project?</h4>
+			</div>
+			<div className="mt-5">
+				<p style={{ fontWeight: '700' }}>
+					Q: Do you want a business website? If yes, describe your business. If no, describe what your website
+					is (will be) about.
+				</p>
+				<p>
+					<span style={{ fontWeight: '700' }}>A:</span> {order.business_description}
+				</p>
+			</div>
+			<div className="mt-3">
+				<p style={{ fontWeight: '700' }}>Q: Do you currently have a website?</p>
+				<p>
+					<span style={{ fontWeight: '700' }}>A: </span>{' '}
+					{order.current_website_description.length > 0 ? order.current_website_description : 'No'}
+				</p>
+			</div>
+			<div className="mt-3">
+				<p style={{ fontWeight: '700' }}>
+					Q: What are your goals for this project? What will define this project as successful?
+				</p>
+				<p>
+					<span style={{ fontWeight: '700' }}>A:</span> {order.project_description}
+				</p>
+			</div>
+			<div className="mt-3">
+				<p style={{ fontWeight: '700' }}>
+					Q: Is there anything in particular you want on your site? Describe all the features you want your
+					website to have. (You have a maximum of 3 custom features)
+				</p>
+				<p>
+					<span style={{ fontWeight: '700' }}>A:</span> {order.features_description}
+				</p>
+			</div>
+			<div className="mt-3">
+				<p style={{ fontWeight: '700' }}>
+					Q: Who is your target audience? What information does your audience need to know from your website?
+				</p>
+				<p>
+					<span style={{ fontWeight: '700' }}>A:</span> {order.audience_description}
+				</p>
+			</div>
+			<div className="mt-3">
+				<p style={{ fontWeight: '700' }}>Q: What’s your deadline and budget? How flexible are they?</p>
+				<p>
+					<span style={{ fontWeight: '700' }}>A:</span> {order.budget_and_deadline_description}
+				</p>
+			</div>
+		</React.Fragment>
+	);
+
+	const showClientInfo = () => (
+		<div className="card mt-5">
+			<div className="card-body">
+				<div className="row">
+					<div className="col-md-4">
+						<p>
+							<strong>Clients' Name:</strong> {order.client_fullname}
+						</p>
+						<p>
+							<strong>Clients' Email:</strong> {order.client_email}
+						</p>
+						<p>
+							<strong>Clients' Phone Number:</strong> {order.client_phone_number}
+						</p>
+					</div>
+					<div className="col-md-4">
+						<p>
+							<strong>Starting Date:</strong> {moment(order.createdAt).fromNow()}
+						</p>
+						<p>
+							<strong>Expected End:</strong> 5 to 7 days
+						</p>
+						<p>
+							<strong>Order Status:</strong>{' '}
+							<span style={{ color: '#f56a6a' }}>{order.order_status}</span>
+						</p>
+					</div>
+					<div className="col-md-4">
+						{/* <form>
+							<div className="form-group">
+								<label for="project_price">Set Project Price</label>
+								<input
+									type="number"
+									className="form-control"
+									id="project_price"
+									value={project_price}
+									onChange={(e) => setProjectPrice(e.target.value)}
+								/>
+								<small id="emailHelp" className="form-text text-muted">
+									We'll never share your email with anyone else.
+								</small>
+							</div>
+						</form> */}
+						<form>
+							<div className="form-group">
+								<label htmlFor="order_status">Update order status</label>
+								<select
+									name="order_status"
+									id="order_status"
+									className="form-control"
+									value={order.order_status}
+									onChange={(e) => handleStatusChange(e)}
+								>
+									<option value="">Select a status</option>
+									{allStatus.map((s, i) => (
+										<option key={i} value={s}>
+											{s}
+										</option>
+									))}
+								</select>
+							</div>
+						</form>
+						<form>
+							<div className="form-group">
+								<label htmlFor="order_price">Update estimated price</label>
+								<input
+									type="number"
+									id="order_price"
+									className="form-control"
+									style={{ width: '30%' }}
+									value={order_price}
+									onChange={(e) => setOrderPrice(e.target.value)}
+								/>
+								<button className="btn btn-dark mt-3" onClick={(e) => handleUpdatePrice(e)}>
+									Update
+								</button>
+							</div>
+						</form>
+						<div>
+							<button className="btn btn-danger float-right" onClick={handleRemoveOrder}>
+								Remove Order
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	);
+
+	const handleStatusChange = async (e) => {
+		try {
+			const res = await updateOrderStatus(order._id, e.target.value, user.token);
+			// console.log(res.data);
+			toast.success('Status has been updated!');
+			setReload(!reload);
+		} catch (err) {
+			toast.error('Failed to update order status!');
+		}
+	};
+
+	const handleUpdatePrice = async (e) => {
+		e.preventDefault();
+		try {
+			const res = await updateOrderPrice(order._id, order_price, user.token);
+			toast.success('Estimated price has been updated!');
+			setReload(!reload);
+		} catch (err) {
+			toast.error('Failed to update estimated price!');
+		}
+	};
+
+	const handleRemoveOrder = async () => {
+		try {
+			const res = await removeOrder(order._id, user.token);
+			toast.success('Order has been removed!');
+			Router.push('/admin/dashboard');
+		} catch (err) {
+			toast.error('Failed to remove this order!');
+		}
+	};
+	return (
+		<Layout headerStyle="" headerActiveLink="">
+			<Admin>
+				<main id="main">
+					<Breadcrumbs pageTitle="Order Detail" />
+					<section className="inner-page">
+						<div className="container">
+							<div>
+								<h5>
+									Package Type:{' '}
+									<span style={{ color: '#f56a6a', fontWeight: '700' }}>
+										{order.order_type && order.order_type.toUpperCase()}
+									</span>
+									<span className="float-right">
+										Estimated Price: <span className="text-success">${order.order_price}</span>
+									</span>
+								</h5>
+							</div>
+
+							{order.client_fullname && showClientInfo()}
+
+							{order.client_fullname && showOrderDetails()}
+						</div>
+					</section>
+				</main>
+			</Admin>
+		</Layout>
+	);
+};
+
+export async function getServerSideProps({ params }) {
+	return {
+		props: {
+			params
+		}
+	};
+}
+
+export default OrderDetailPage;

@@ -26,7 +26,7 @@ const CTA = () => {
 						</p>
 					</div>
 					<div className="col-lg-3 cta-btn-container text-center">
-						<a className="cta-btn align-middle" href="#">
+						<a className="cta-btn align-middle" href="#pricing">
 							View Packages
 						</a>
 					</div>

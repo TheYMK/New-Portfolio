@@ -50,7 +50,7 @@ const FAQ = () => {
 								Zoom or whatever is suitable for both of us to discuss the project. Once we get started,
 								most of the communication will take place over email. This makes the process a lot
 								easier as we’ll have all of the information saved and can come back to it later. Once
-								I’ve finished the the development process of the project, we will have a test session
+								I’ve finished the development process of the project, we will have a test session
 								together and make revisions if necessary.
 							</p>
 						</div>
@@ -109,10 +109,10 @@ const FAQ = () => {
 						</a>
 						<div id="faq7" className="collapse" data-parent=".faq-list">
 							<p>
-								Sorry. No hosting fees are included in the packages. I ask that you select a hosting
-								provider of your choice. And if you need help with the hosting it will cost you more.
-								The price depends on your hosting provider choice. Some potential hosting providers are
-								GoDaddy, Digital Ocean, BlueHost, Heroku or really anywhere you like.
+								Yes, you get 1 year free hosting service on all packages. You'll receive a reminder 1
+								month before the end of the free hosting period to upgrade to a paid service, or to
+								prepare for a website migration to an other service. If you fail to upgrade to a paid
+								service, your website will be automatically shutdown.
 							</p>
 						</div>
 					</li>
