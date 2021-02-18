@@ -7,6 +7,8 @@ import moment from 'moment';
 import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import Router from 'next/router';
+import { PDFDownloadLink } from '@react-pdf/renderer';
+import Invoice from '../../../components/order/Invoice';
 
 const OrderDetailPage = ({ params }) => {
 	const [ order, setOrder ] = useState({});
@@ -34,7 +36,6 @@ const OrderDetailPage = ({ params }) => {
 	const fetchOrder = async () => {
 		try {
 			const res = await getSingleOrder(params.id);
-			console.log(`Refetching Order: ${JSON.stringify(res.data)}`);
 			setOrder(res.data);
 			setOrderPrice(res.data.order_price);
 		} catch (err) {
@@ -47,6 +48,22 @@ const OrderDetailPage = ({ params }) => {
 			<div className="mt-5">
 				<h4>What to know about this project?</h4>
 			</div>
+			<div className="mt-5">
+				<p style={{ fontWeight: '700' }}>Q: Logo Design?</p>
+				<p>
+					<span style={{ fontWeight: '700' }}>A:</span>{' '}
+					{order.logo_description.length > 0 ? order.logo_description : 'No'}
+				</p>
+			</div>
+
+			<div className="mt-5">
+				<p style={{ fontWeight: '700' }}>Q: Business Card Design?</p>
+				<p>
+					<span style={{ fontWeight: '700' }}>A:</span>{' '}
+					{order.businesscard_description.length > 0 ? order.businesscard_description : 'No'}
+				</p>
+			</div>
+
 			<div className="mt-5">
 				<p style={{ fontWeight: '700' }}>
 					Q: Do you want a business website? If yes, describe your business. If no, describe what your website
@@ -117,7 +134,10 @@ const OrderDetailPage = ({ params }) => {
 							<strong>Starting Date:</strong> {moment(order.createdAt).fromNow()}
 						</p>
 						<p>
-							<strong>Expected End:</strong> 5 to 7 days
+							<strong>Expected End:</strong> {order.order_type === 'basic' && '5 to 7 days'}{' '}
+							{order.order_type === 'standard' && '15 to 20 days'}
+							{order.order_type === 'premium' && '1 month or more'}
+							{order.order_type === 'ultimate' && 'undefined'}
 						</p>
 						<p>
 							<strong>Order Status:</strong>{' '}
@@ -161,7 +181,7 @@ const OrderDetailPage = ({ params }) => {
 						</form>
 						<form>
 							<div className="form-group">
-								<label htmlFor="order_price">Update estimated price</label>
+								<label htmlFor="order_price">Update estimated price ($)</label>
 								<input
 									type="number"
 									id="order_price"
@@ -178,6 +198,9 @@ const OrderDetailPage = ({ params }) => {
 						<div>
 							<button className="btn btn-danger float-right" onClick={handleRemoveOrder}>
 								Remove Order
+							</button>
+							<button className="btn btn-info float-right mr-3" onClick={handleAccountSetup}>
+								Setup Account
 							</button>
 						</div>
 					</div>
@@ -217,6 +240,28 @@ const OrderDetailPage = ({ params }) => {
 			toast.error('Failed to remove this order!');
 		}
 	};
+
+	const showDownloadPDFLink = (order) => (
+		<PDFDownloadLink
+			document={<Invoice order={order} />}
+			fileName="invoice.pdf"
+			className="btn btn-sm btn-danger btn-raised"
+		>
+			Download Invoice (PDF)
+		</PDFDownloadLink>
+	);
+
+	const handleAccountSetup = async () => {
+		try {
+		} catch (err) {
+			toast.error('Failed to setup account');
+		}
+	};
+
+	if (Object.keys(order).length === 0 && order.constructor === Object) {
+		return null;
+	}
+
 	return (
 		<Layout headerStyle="" headerActiveLink="">
 			<Admin>
@@ -235,6 +280,8 @@ const OrderDetailPage = ({ params }) => {
 									</span>
 								</h5>
 							</div>
+
+							{/* <div className="text-center">{order.client_fullname && showDownloadPDFLink(order)}</div> */}
 
 							{order.client_fullname && showClientInfo()}
 

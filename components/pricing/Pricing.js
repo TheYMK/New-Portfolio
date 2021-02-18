@@ -61,8 +61,8 @@ const Pricing = () => {
 				<div className="card text-center m-5 promotion_card">
 					<div className="card-body">
 						<i className="ri-alarm-warning-fill" /> Get 1 year free <span>HOSTING</span> +{' '}
-						<span> .COM DOMAIN NAME</span> + <span>PRO EMAIL</span> + <span>SSL CERTIFICATE</span> on all
-						packages
+						<span>DOMAIN NAME (.COM, .FR, .NET, etc...)</span> + <span>PRO EMAIL</span> +{' '}
+						<span>SSL CERTIFICATE</span> on all packages
 					</div>
 				</div>
 
@@ -144,7 +144,7 @@ const Pricing = () => {
 								</li>
 								<li>Number of Pages: up to 10</li>
 								<li>Revisions: up to 10</li>
-								<li>Delivery Time: 10 to 12 days</li>
+								<li>Delivery Time: 15 to 20 days</li>
 							</ul>
 							<div className="btn-wrap">
 								<a className="btn-buy" onClick={handleStandardPlanClick}>
@@ -188,7 +188,7 @@ const Pricing = () => {
 								</li>
 								<li>Number of Pages: up to 20</li>
 								<li>Revisions: unlimited</li>
-								<li>Delivery Time: 20 to 25 days</li>
+								<li>Delivery Time: 1 month or more</li>
 							</ul>
 							<div className="btn-wrap">
 								<a className="btn-buy" onClick={handlePremiumPlanClick}>

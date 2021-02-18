@@ -1,6 +1,30 @@
 import React from 'react';
+import { useState } from 'react';
+import { toast } from 'react-toastify';
+import { emailContactForm } from '../../actions/form';
 
 const Contact = () => {
+	const [ values, setValues ] = useState({
+		name: '',
+		email: '',
+		subject: '',
+		message: ''
+	});
+
+	const { name, email, subject, message } = values;
+
+	const handleSubmit = async (e) => {
+		e.preventDefault();
+
+		try {
+			const res = await emailContactForm(values);
+			setValues({ ...values, name: '', email: '', subject: '', message: '' });
+			toast.success('Your message has been sent! I will get back to you as soon as possible :)');
+		} catch (err) {
+			toast.error('Failed to send your message! Please try again :(');
+		}
+	};
+
 	return (
 		<section id="contact" className="contact">
 			<div className="container">
@@ -33,7 +57,7 @@ const Contact = () => {
 					</div>
 
 					<div className="col-lg-8 mt-5 mt-lg-0" data-aos="fade-left">
-						<form action="forms/contact.php" method="post" role="form" className="php-email-form">
+						<form onSubmit={handleSubmit}>
 							<div className="form-row">
 								<div className="col-md-6 form-group">
 									<input
@@ -42,8 +66,10 @@ const Contact = () => {
 										className="form-control"
 										id="name"
 										placeholder="Your Name"
+										value={name}
 										data-rule="minlen:4"
 										data-msg="Please enter at least 4 chars"
+										onChange={(e) => setValues({ ...values, name: e.target.value })}
 									/>
 								</div>
 								<div className="col-md-6 form-group">
@@ -54,7 +80,9 @@ const Contact = () => {
 										id="email"
 										placeholder="Your Email"
 										data-rule="email"
+										value={email}
 										data-msg="Please enter a valid email"
+										onChange={(e) => setValues({ ...values, email: e.target.value })}
 									/>
 								</div>
 							</div>
@@ -66,7 +94,9 @@ const Contact = () => {
 									id="subject"
 									placeholder="Subject"
 									data-rule="minlen:4"
+									value={subject}
 									data-msg="Please enter at least 8 chars of subject"
+									onChange={(e) => setValues({ ...values, subject: e.target.value })}
 								/>
 							</div>
 							<div className="form-group">
@@ -77,6 +107,8 @@ const Contact = () => {
 									data-rule="required"
 									data-msg="Please write something for us"
 									placeholder="Message"
+									value={message}
+									onChange={(e) => setValues({ ...values, message: e.target.value })}
 								/>
 							</div>
 

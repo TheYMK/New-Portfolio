@@ -107,7 +107,10 @@ const BasicPlanOrderCompletion = () => {
 							name="option"
 							id="nowebsite"
 							value="false"
-							onClick={(e) => setHaveWebsite(false)}
+							onClick={(e) => {
+								setHaveWebsite(false);
+								setValues({ ...values, current_website_description: '' });
+							}}
 							defaultChecked={true}
 						/>
 						<label className="form-check-label" htmlFor="nowebsite">
@@ -332,7 +335,7 @@ const BasicPlanOrderCompletion = () => {
 						<tr>
 							<td>Google Analytics</td>
 							<td>
-								<CheckCircleIcon className="text-success" />
+								<CancelIcon className="text-danger" />
 							</td>
 							<td>Google Analytics is not included in this package.</td>
 						</tr>
@@ -341,7 +344,9 @@ const BasicPlanOrderCompletion = () => {
 							<td>
 								<CheckCircleIcon className="text-success" />
 							</td>
-							<td>I'll give you the right tools to communicate regularly with your subscribers</td>
+							<td>
+								I'll build the right tools so that you can communicate regularly with your subscribers.
+							</td>
 						</tr>
 						<tr>
 							<td>Contact Forms</td>
@@ -397,7 +402,7 @@ const BasicPlanOrderCompletion = () => {
 							<td>
 								<CheckCircleIcon className="text-success" />
 							</td>
-							<td>I will setup a 1 year free .COM domain name for your website.</td>
+							<td>I will setup a 1 year free domain name (.COM, .ORG, .FR, ...etc) for your website.</td>
 						</tr>
 						<tr>
 							<td>SSL Certficate</td>

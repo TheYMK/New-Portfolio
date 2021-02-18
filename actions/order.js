@@ -44,3 +44,7 @@ export const removeOrder = async (id, authtoken) => {
 		}
 	});
 };
+
+export const getTotalOrderCount = async () => {
+	return await axios.get(`${API_URL}/orders/total`);
+};

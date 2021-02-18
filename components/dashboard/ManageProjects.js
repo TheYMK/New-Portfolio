@@ -114,37 +114,39 @@ const ManageProjects = () => {
 	};
 
 	const showProjects = () => (
-		<table className="table">
-			<thead>
-				<tr>
-					<th scope="col">#</th>
-					<th scope="col">Name</th>
-					<th scope="col">Category</th>
-					<th scope="col">URL</th>
-					<th scope="col">Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				{projects.map((p, i) => (
-					<tr key={p._id}>
-						<th scope="row">{i + 1}</th>
-
-						<td>{p.name}</td>
-						<td>{p.category}</td>
-						<td>{p.url}</td>
-						<td>
-							<button className="badge bg-danger btn" onClick={(e) => handleRemove(p.slug)}>
-								Delete
-							</button>
-							<br />
-							<Link href={`/admin/project/${p.slug}`}>
-								<a className="badge bg-warning btn">Update</a>
-							</Link>
-						</td>
+		<div className="table-responsive">
+			<table className="table">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Name</th>
+						<th scope="col">Category</th>
+						<th scope="col">URL</th>
+						<th scope="col">Action</th>
 					</tr>
-				))}
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					{projects.map((p, i) => (
+						<tr key={p._id}>
+							<th scope="row">{i + 1}</th>
+
+							<td>{p.name}</td>
+							<td>{p.category}</td>
+							<td>{p.url}</td>
+							<td>
+								<button className="badge bg-danger btn" onClick={(e) => handleRemove(p.slug)}>
+									Delete
+								</button>
+								<br />
+								<Link href={`/admin/project/${p.slug}`}>
+									<a className="badge bg-warning btn">Update</a>
+								</Link>
+							</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
 	);
 
 	return (

@@ -111,50 +111,52 @@ const ManageBlogs = ({ router }) => {
 	};
 
 	const showBlogs = () => (
-		<table className="table">
-			<thead>
-				<tr>
-					<th scope="col">#</th>
-					<th scope="col">Title</th>
-					<th scope="col">Categories</th>
-					<th scope="col">Tags</th>
-					<th scope="col">Published On</th>
-					<th scope="col">Action</th>
-				</tr>
-			</thead>
-			<tbody>
-				{blogs.map((b, i) => (
-					<tr key={i}>
-						<th scope="row">{i + 1}</th>
-						<td>{b.title}</td>
-						<td>
-							{b.categories.map((c, j) => (
-								<div className="badge bg-info mr-2" key={j}>
-									{c.name}
-								</div>
-							))}
-						</td>
-						<td>
-							{b.tags.map((t, j) => (
-								<div className="badge bg-success mr-2" key={j}>
-									{t.name}
-								</div>
-							))}
-						</td>
-						<td>{new Date(b.createdAt).toLocaleDateString('en-US')}</td>
-						<td>
-							<button className="badge bg-danger btn" onClick={() => deleteBlog(b.slug)}>
-								Delete
-							</button>
-							<br />
-							<Link href={`/admin/blog/${b.slug}`}>
-								<a className="badge bg-warning btn">Update</a>
-							</Link>
-						</td>
+		<div className="table-responsive">
+			<table className="table">
+				<thead>
+					<tr>
+						<th scope="col">#</th>
+						<th scope="col">Title</th>
+						<th scope="col">Categories</th>
+						<th scope="col">Tags</th>
+						<th scope="col">Published On</th>
+						<th scope="col">Action</th>
 					</tr>
-				))}
-			</tbody>
-		</table>
+				</thead>
+				<tbody>
+					{blogs.map((b, i) => (
+						<tr key={i}>
+							<th scope="row">{i + 1}</th>
+							<td>{b.title}</td>
+							<td>
+								{b.categories.map((c, j) => (
+									<div className="badge bg-info mr-2" key={j}>
+										{c.name}
+									</div>
+								))}
+							</td>
+							<td>
+								{b.tags.map((t, j) => (
+									<div className="badge bg-success mr-2" key={j}>
+										{t.name}
+									</div>
+								))}
+							</td>
+							<td>{new Date(b.createdAt).toLocaleDateString('en-US')}</td>
+							<td>
+								<button className="badge bg-danger btn" onClick={() => deleteBlog(b.slug)}>
+									Delete
+								</button>
+								<br />
+								<Link href={`/admin/blog/${b.slug}`}>
+									<a className="badge bg-warning btn">Update</a>
+								</Link>
+							</td>
+						</tr>
+					))}
+				</tbody>
+			</table>
+		</div>
 	);
 
 	const showModal = () => {

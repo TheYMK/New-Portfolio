@@ -5,14 +5,17 @@ import ManageOrders from './ManageOrders';
 import ManageProjects from './ManageProjects';
 import { getTotalProjectCount } from '../../actions/project';
 import { getTotalBlogCount } from '../../actions/blog';
+import { getTotalOrderCount } from '../../actions/order';
 
 const AdminDashboard = () => {
 	const [ totalProjectCount, setTotalProjectCount ] = useState(0);
 	const [ totalBlogCount, setTotalBlogCount ] = useState(0);
+	const [ totalOrderCount, setTotalOrderCount ] = useState(0);
 
 	useEffect(() => {
 		fetchTotalProjectCount();
 		fetchTotalBlogCount();
+		fetchTotalOrderCount();
 	}, []);
 
 	const fetchTotalProjectCount = () => {
@@ -35,11 +38,21 @@ const AdminDashboard = () => {
 			});
 	};
 
+	const fetchTotalOrderCount = () => {
+		getTotalOrderCount()
+			.then((res) => {
+				setTotalOrderCount(res.data);
+			})
+			.catch((err) => {
+				console.log(err);
+			});
+	};
+
 	return (
 		<React.Fragment>
 			<div className="container">
 				<div className="row">
-					<div className="col-sm-3">
+					<div className="col-sm-3 mb-3">
 						<div className="card">
 							<div className="card-body">
 								<h5 className="card-title">Projects</h5>
@@ -49,7 +62,7 @@ const AdminDashboard = () => {
 							</div>
 						</div>
 					</div>
-					<div className="col-sm-3">
+					<div className="col-sm-3 mb-3">
 						<div className="card">
 							<div className="card-body">
 								<h5 className="card-title">Blogs</h5>
@@ -59,17 +72,17 @@ const AdminDashboard = () => {
 							</div>
 						</div>
 					</div>
-					<div className="col-sm-3">
+					<div className="col-sm-3 mb-3">
 						<div className="card">
 							<div className="card-body">
 								<h5 className="card-title">Orders</h5>
 								<h4 className="card-text">
-									<strong>Total Count: {totalProjectCount}</strong>
+									<strong>Total Count: {totalOrderCount}</strong>
 								</h4>
 							</div>
 						</div>
 					</div>
-					<div className="col-sm-3">
+					<div className="col-sm-3 mb-3">
 						<div className="card">
 							<div className="card-body">
 								<h5 className="card-title">Accounts</h5>

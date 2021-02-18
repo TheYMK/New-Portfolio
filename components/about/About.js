@@ -26,13 +26,13 @@ const About = () => {
 							<br />
 							<br />
 							He is a quick learner, confident communicator and strategic thinker. His current toolset
-							includes Javascript, HTML&CSS, Node.JS, React, MongoDB, Java, Swift and various frameworks,
-							libraries and technologies related to Web Development and Mobile Development. He is a huge
-							fan of Javascript and technologies related to this beautiful language. Definitely the guy
-							you would love to work with as he will bring smile on your face with his stupid and silly
-							jokes And guess what?... He is currently available for a position that will allow him to
-							improve his programming, communication and teamwork skills (because yes it's not just all
-							about coding).
+							includes Javascript, HTML&CSS, Node.JS, React, Next.js, Redux, MongoDB, Java, Swift and
+							various frameworks, libraries and technologies related to Web Development and Mobile
+							Development. He is a huge fan of Javascript and technologies related to this beautiful
+							language. Definitely the guy you would love to work with as he will bring smile on your face
+							with his stupid and silly jokes And guess what?... He is currently available for a position
+							that will allow him to improve his programming, communication and teamwork skills (because
+							yes it's not just all about coding).
 							<br />
 							<br />
 							<strong>OTHER THAN HIS PRO SKILLS</strong>: He speaks 6 languages: French (10/10),

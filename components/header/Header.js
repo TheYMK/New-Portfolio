@@ -73,7 +73,7 @@ const Header = ({ headerStyle, headerActiveLink }) => {
 
 						{user && (
 							<li className="drop-down">
-								<Link href="">
+								<Link href="/#">
 									<a>{user.email && user.email.split('@')[0]}</a>
 								</Link>
 

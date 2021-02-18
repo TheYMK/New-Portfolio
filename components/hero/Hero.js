@@ -9,10 +9,10 @@ const Hero = () => {
 						<h2 className="animate__animated animate__fadeInDown">
 							<span>Kaym Kassai</span>
 						</h2>
-						<p className="animate__animated fanimate__adeInUp">Full-Stack Developer</p>
+						<p className="animate__animated fanimate__adeInUp">Freelance Full-Stack Developer</p>
 
 						<a href="#about" className="btn-get-started animate__animated animate__fadeInUp scrollto">
-							Read More
+							Get To Know Me
 						</a>
 					</div>
 				</div>
@@ -20,11 +20,13 @@ const Hero = () => {
 				<div className="carousel-item">
 					<div className="carousel-container">
 						<h2 className="animate__animated animate__fadeInDown">
-							<span>Kaym Kassai</span>
+							<span>Let's take your business to the next step!</span>
 						</h2>
-						<p className="animate__animated fanimate__adeInUp">Full-Stack Developer</p>
-						<a href="#about" className="btn-get-started animate__animated animate__fadeInUp scrollto">
-							Read More
+						<p className="animate__animated fanimate__adeInUp">
+							I do Web Development, Search Engine Optimization & Design
+						</p>
+						<a href="#services" className="btn-get-started animate__animated animate__fadeInUp scrollto">
+							View services
 						</a>
 					</div>
 				</div>
@@ -32,11 +34,13 @@ const Hero = () => {
 				<div className="carousel-item">
 					<div className="carousel-container">
 						<h2 className="animate__animated animate__fadeInDown">
-							<span>Kaym Kassai</span>
+							<span>Special Offer</span>
 						</h2>
-						<p className="animate__animated fanimate__adeInUp">Full-Stack Developer</p>
-						<a href="#about" className="btn-get-started animate__animated animate__fadeInUp scrollto">
-							Read More
+						<p className="animate__animated fanimate__adeInUp">
+							1 year free Domain Name + Hosting + Pro Email + SSL Certificate
+						</p>
+						<a href="#pricing" className="btn-get-started animate__animated animate__fadeInUp scrollto">
+							View packages
 						</a>
 					</div>
 				</div>
