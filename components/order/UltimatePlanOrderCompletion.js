@@ -458,13 +458,13 @@ const UltimatePlanOrderCompletion = () => {
 	const packageInformation = () => (
 		<div className="mt-5">
 			<p className="text-center">
-				Phewww!!! don't worry this is the final step. Here is more details of what you get from this package.
-				Make sure you read carefully to avoid any misunderstanding. If you have any question please{' '}
+				Phewww!!! don't worry this is the final step. Hit the finish button to validate. If you have any
+				question please{' '}
 				<a style={{ color: '#f56a6a' }} href="/#contact">
 					contact me
 				</a>
 			</p>
-			<div className="table-responsive">
+			{/* <div className="table-responsive">
 				<table class="table">
 					<thead class="thead-dark">
 						<tr>
@@ -619,7 +619,7 @@ const UltimatePlanOrderCompletion = () => {
 						</tr>
 					</tbody>
 				</table>
-			</div>
+			</div> */}
 		</div>
 	);
 

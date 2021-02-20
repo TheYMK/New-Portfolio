@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 const About = () => {
 	return (
@@ -25,14 +26,14 @@ const About = () => {
 							and front-end codebases.
 							<br />
 							<br />
-							He is a quick learner, confident communicator and strategic thinker. His current toolset
-							includes Javascript, HTML&CSS, Node.JS, React, Next.js, Redux, MongoDB, Java, Swift and
-							various frameworks, libraries and technologies related to Web Development and Mobile
+							He is a quick learner, confident communicator, and strategic thinker. His current toolset
+							includes Javascript, HTML&CSS, Node.JS, React, Next.js, Redux, MongoDB, Java, Swift, and
+							various frameworks, libraries, and technologies related to Web Development and Mobile
 							Development. He is a huge fan of Javascript and technologies related to this beautiful
-							language. Definitely the guy you would love to work with as he will bring smile on your face
-							with his stupid and silly jokes And guess what?... He is currently available for a position
-							that will allow him to improve his programming, communication and teamwork skills (because
-							yes it's not just all about coding).
+							language. Definitely the guy you would love to work with as he will bring a smile to your
+							face with his stupid and silly jokes. And guess what?... He is currently available for a
+							position that will allow him to improve his programming, communication, and teamwork skills
+							(because yes it's not just all about coding).
 							<br />
 							<br />
 							<strong>OTHER THAN HIS PRO SKILLS</strong>: He speaks 6 languages: French (10/10),
@@ -42,9 +43,9 @@ const About = () => {
 							<br />
 							Oh, and by the way, he does not love talking about himself in the 3rd person at all :)
 						</p>
-						<a href="#" className="btn-learn-more">
-							Get To Know More About Me
-						</a>
+						<Link href="/about">
+							<a className="btn-learn-more">Get To Know More About Me</a>
+						</Link>
 					</div>
 				</div>
 			</div>

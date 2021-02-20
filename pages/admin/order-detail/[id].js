@@ -9,6 +9,7 @@ import { useSelector } from 'react-redux';
 import Router from 'next/router';
 import { PDFDownloadLink } from '@react-pdf/renderer';
 import Invoice from '../../../components/order/Invoice';
+import LoadingToRedirect from '../../../components/LoadingToRedirect';
 
 const OrderDetailPage = ({ params }) => {
 	const [ order, setOrder ] = useState({});
@@ -48,36 +49,38 @@ const OrderDetailPage = ({ params }) => {
 			<div className="mt-5">
 				<h4>What to know about this project?</h4>
 			</div>
-			<div className="mt-5">
+
+			<div className="mt-3">
 				<p style={{ fontWeight: '700' }}>Q: Logo Design?</p>
 				<p>
 					<span style={{ fontWeight: '700' }}>A:</span>{' '}
-					{order.logo_description.length > 0 ? order.logo_description : 'No'}
+					{order.logo_description.length > 0 ? order.logo_description : 'No answer'}
 				</p>
 			</div>
 
-			<div className="mt-5">
+			<div className="mt-3">
 				<p style={{ fontWeight: '700' }}>Q: Business Card Design?</p>
 				<p>
 					<span style={{ fontWeight: '700' }}>A:</span>{' '}
-					{order.businesscard_description.length > 0 ? order.businesscard_description : 'No'}
+					{order.businesscard_description.length > 0 ? order.businesscard_description : 'No answer'}
 				</p>
 			</div>
 
-			<div className="mt-5">
+			<div className="mt-3">
 				<p style={{ fontWeight: '700' }}>
 					Q: Do you want a business website? If yes, describe your business. If no, describe what your website
 					is (will be) about.
 				</p>
 				<p>
-					<span style={{ fontWeight: '700' }}>A:</span> {order.business_description}
+					<span style={{ fontWeight: '700' }}>A:</span>{' '}
+					{order.business_description.length > 0 ? order.business_description : 'No answer'}
 				</p>
 			</div>
 			<div className="mt-3">
 				<p style={{ fontWeight: '700' }}>Q: Do you currently have a website?</p>
 				<p>
 					<span style={{ fontWeight: '700' }}>A: </span>{' '}
-					{order.current_website_description.length > 0 ? order.current_website_description : 'No'}
+					{order.current_website_description.length > 0 ? order.current_website_description : 'No answer'}
 				</p>
 			</div>
 			<div className="mt-3">
@@ -85,7 +88,8 @@ const OrderDetailPage = ({ params }) => {
 					Q: What are your goals for this project? What will define this project as successful?
 				</p>
 				<p>
-					<span style={{ fontWeight: '700' }}>A:</span> {order.project_description}
+					<span style={{ fontWeight: '700' }}>A:</span>{' '}
+					{order.project_description.length > 0 ? order.project_description : 'No answer'}
 				</p>
 			</div>
 			<div className="mt-3">
@@ -94,7 +98,8 @@ const OrderDetailPage = ({ params }) => {
 					website to have. (You have a maximum of 3 custom features)
 				</p>
 				<p>
-					<span style={{ fontWeight: '700' }}>A:</span> {order.features_description}
+					<span style={{ fontWeight: '700' }}>A:</span>{' '}
+					{order.features_description.length > 0 ? order.features_description : 'No answer'}
 				</p>
 			</div>
 			<div className="mt-3">
@@ -102,13 +107,19 @@ const OrderDetailPage = ({ params }) => {
 					Q: Who is your target audience? What information does your audience need to know from your website?
 				</p>
 				<p>
-					<span style={{ fontWeight: '700' }}>A:</span> {order.audience_description}
+					<span style={{ fontWeight: '700' }}>A:</span>{' '}
+					{order.audience_description.length > 0 ? order.audience_description : 'No answer'}
 				</p>
 			</div>
 			<div className="mt-3">
 				<p style={{ fontWeight: '700' }}>Q: What’s your deadline and budget? How flexible are they?</p>
 				<p>
-					<span style={{ fontWeight: '700' }}>A:</span> {order.budget_and_deadline_description}
+					<span style={{ fontWeight: '700' }}>A:</span>{' '}
+					{order.budget_and_deadline_description.length > 0 ? (
+						order.budget_and_deadline_description
+					) : (
+						'No answer'
+					)}
 				</p>
 			</div>
 		</React.Fragment>
@@ -259,7 +270,7 @@ const OrderDetailPage = ({ params }) => {
 	};
 
 	if (Object.keys(order).length === 0 && order.constructor === Object) {
-		return null;
+		return <LoadingToRedirect />;
 	}
 
 	return (

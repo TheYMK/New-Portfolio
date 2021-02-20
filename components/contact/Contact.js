@@ -11,17 +11,22 @@ const Contact = () => {
 		message: ''
 	});
 
+	const [ loading, setLoading ] = useState(false);
+
 	const { name, email, subject, message } = values;
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		setLoading(true);
 
 		try {
 			const res = await emailContactForm(values);
 			setValues({ ...values, name: '', email: '', subject: '', message: '' });
+			setLoading(false);
 			toast.success('Your message has been sent! I will get back to you as soon as possible :)');
 		} catch (err) {
 			toast.error('Failed to send your message! Please try again :(');
+			setLoading(false);
 		}
 	};
 
@@ -113,7 +118,7 @@ const Contact = () => {
 							</div>
 
 							<div className="text-center">
-								<button type="submit">Send Message</button>
+								<button type="submit">{loading ? 'Sending...' : 'Send Message'}</button>
 							</div>
 						</form>
 					</div>

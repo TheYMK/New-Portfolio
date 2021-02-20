@@ -33,7 +33,7 @@ function Login() {
 						if (res.data.role === 'admin') {
 							Router.push('/admin/dashboard');
 						} else {
-							Router.push('/user/dashboard');
+							Router.push('/');
 						}
 					}
 				});
@@ -49,7 +49,7 @@ function Login() {
 			if (res.data.role === 'admin') {
 				Router.push('/admin/dashboard');
 			} else {
-				Router.push('/user/dashboard');
+				Router.push('/');
 			}
 		}
 	};

@@ -42,7 +42,9 @@ const PremiumPlanOrderCompletion = () => {
 		// personal
 		client_fullname: '',
 		client_email: '',
-		client_phone_number: ''
+		client_phone_number: '',
+		logo_description: '',
+		businesscard_description: ''
 	});
 
 	const [ haveWebsite, setHaveWebsite ] = useState(false);
@@ -57,7 +59,9 @@ const PremiumPlanOrderCompletion = () => {
 		budget_and_deadline_description,
 		client_fullname,
 		client_email,
-		client_phone_number
+		client_phone_number,
+		logo_description,
+		businesscard_description
 	} = values;
 
 	const classes = useStyles();
