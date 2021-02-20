@@ -111,6 +111,9 @@ const Skills = () => {
 									<li>
 										<i className="ri-check-double-line" /> Adobe XD
 									</li>
+									<li>
+										<i className="ri-check-double-line" /> Figma
+									</li>
 								</ul>
 							</div>
 						</div>
@@ -157,6 +160,9 @@ const Skills = () => {
 									</li>
 									<li>
 										<i className="ri-check-double-line" /> Postman
+									</li>
+									<li>
+										<i className="ri-check-double-line" /> Expo
 									</li>
 									<li>
 										<i className="ri-check-double-line" /> IntelliJ IDEA

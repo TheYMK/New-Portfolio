@@ -70,7 +70,7 @@ const PortfolioDetails = ({ project }) => {
 					<p>{project.description_backend}</p>
 				</div>
 				<div className="portfolio-description">
-					<h4>Challenges</h4>
+					<h4>Challenges & Conclusion</h4>
 					<p>{project.description_challenges}</p>
 				</div>
 			</div>

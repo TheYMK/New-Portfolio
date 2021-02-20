@@ -1,11 +1,46 @@
 import React from 'react';
 import Breadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 import Layout from '../../components/Layout';
+import { DOMAIN, FB_APP_ID } from '../../config';
+import { withRouter } from 'next/router';
+import Head from 'next/head';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
-const AboutMePage = () => {
+const AboutMePage = ({ router }) => {
+	const head = () => (
+		<Head>
+			<title>Kaym Kassai | About Me</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+			<meta
+				name="description"
+				content="Kaym Kassai, Software Engineer, located in Shanghai, China. I have skills in various domain and a serious passion for Web development, Mobile development and creating intuitive, dynamic user experiences..."
+			/>
+			<link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
+			<meta property="og:title" content={`Who am I?`} />
+			<meta
+				property="og:description"
+				content="Kaym Kassai, Software Engineer, located in Shanghai, China. I have skills in various domain and a serious passion for Web development, Mobile development and creating intuitive, dynamic user experiences..."
+			/>
+			<meta property="og:type" content="website" />
+			<meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
+			<meta property="og:site_name" content="Kaym Kassai" />
+			<meta property="og:image" content={`${DOMAIN}/static/img/seo.png`} />
+			<meta property="og:image:secure_url" content={`${DOMAIN}/static/img/seo.png`} />
+			<meta property="og:image:type" content="image/png" />
+			<meta property="fb:app_id" content={`${FB_APP_ID}`} />
+		</Head>
+	);
 	return (
 		<React.Fragment>
 			<Layout headerStyle="" headerActiveLink="">
+				<MessengerCustomerChat
+					pageId="100162721696650"
+					appId={`${FB_APP_ID}`}
+					themeColor="#f56a6a"
+					loggedInGreeting="Hi! How can I help you?"
+					loggedOutGreeting="Hi! How can I help you?"
+					shouldShowDialog={true}
+				/>
 				<Breadcrumbs pageTitle="About me" />
 				<main id="main">
 					<section id="about" className="about">
@@ -55,4 +90,4 @@ const AboutMePage = () => {
 	);
 };
 
-export default AboutMePage;
+export default withRouter(AboutMePage);

@@ -6,8 +6,11 @@ import Layout from '../../components/Layout';
 import DisqusThread from '../../components/disqus/DisqusThread';
 import { toast } from 'react-toastify';
 import BlogItem from '../../components/blog/BlogItem';
+import { DOMAIN, FB_APP_ID } from '../../config';
+import { withRouter } from 'next/router';
+import Head from 'next/head';
 
-const BlogPage = ({ blog }) => {
+const BlogPage = ({ blog, router, params }) => {
 	const [ relatedBlogs, setRelatedBlogs ] = useState([]);
 
 	useEffect(() => {
@@ -22,6 +25,24 @@ const BlogPage = ({ blog }) => {
 			console.log(err);
 		}
 	};
+
+	const head = () => (
+		<Head>
+			<title>Kaym Kassai | Blog Details</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+			<meta name="description" content={`${blog.mdesc}...`} />
+			<link rel="canonical" href={`${DOMAIN}/blog/${params.slug}`} />
+			<meta property="og:title" content={`What I've done | Kaym Kassai`} />
+			<meta property="og:description" content={`${blog.mdesc}...`} />
+			<meta property="og:type" content="website" />
+			<meta property="og:url" content={`${DOMAIN}/blog/${params.slug}`} />
+			<meta property="og:site_name" content="Kaym Kassai" />
+			<meta property="og:image" content={`${DOMAIN}/static/img/seo.png`} />
+			<meta property="og:image:secure_url" content={`${DOMAIN}/static/img/seo.png`} />
+			<meta property="og:image:type" content="image/png" />
+			<meta property="fb:app_id" content={`${FB_APP_ID}`} />
+		</Head>
+	);
 
 	// Disqus
 	const showComments = () => {
@@ -39,6 +60,7 @@ const BlogPage = ({ blog }) => {
 
 	return (
 		<React.Fragment>
+			{head()}
 			<Layout headerStyle="" headerActiveLink="">
 				<Breadcrumbs pageTitle="Blog Details" />
 				<main id="main">
@@ -61,10 +83,11 @@ export async function getServerSideProps({ params }) {
 	return getSingleBlog(params.slug).then(async (res) => {
 		return {
 			props: {
-				blog: res.data
+				blog: res.data,
+				params
 			}
 		};
 	});
 }
 
-export default BlogPage;
+export default withRouter(BlogPage);

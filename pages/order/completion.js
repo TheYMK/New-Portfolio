@@ -8,8 +8,11 @@ import StandardPlanOrderCompletion from '../../components/order/StandardPlanOrde
 import PremiumPlanOrderCompletion from '../../components/order/PremiumPlanOrderCompletion';
 import UltimatePlanOrderCompletion from '../../components/order/UltimatePlanOrderCompletion';
 import { toast } from 'react-toastify';
+import { DOMAIN, FB_APP_ID } from '../../config';
+import { withRouter } from 'next/router';
+import Head from 'next/head';
 
-const OrderCompletionPage = () => {
+const OrderCompletionPage = ({ router }) => {
 	const [ plan, setPlan ] = useState('');
 	const { user, order_type } = useSelector((state) => ({ ...state }));
 
@@ -22,8 +25,28 @@ const OrderCompletionPage = () => {
 		},
 		[ order_type ]
 	);
+
+	const head = () => (
+		<Head>
+			<title>Kaym Kassai | Order completion</title>
+			<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+			<meta name="description" content="" />
+			<link rel="canonical" href={`${DOMAIN}${router.pathname}`} />
+			<meta property="og:title" content={``} />
+			<meta property="og:description" content="" />
+			<meta property="og:type" content="website" />
+			<meta property="og:url" content={`${DOMAIN}${router.pathname}`} />
+			<meta property="og:site_name" content="Kaym Kassai" />
+			<meta property="og:image" content={`${DOMAIN}/static/img/seo.png`} />
+			<meta property="og:image:secure_url" content={`${DOMAIN}/static/img/seo.png`} />
+			<meta property="og:image:type" content="image/png" />
+			<meta property="fb:app_id" content={`${FB_APP_ID}`} />
+		</Head>
+	);
+
 	return (
 		<React.Fragment>
+			{head()}
 			<Layout headerStyle="" headerActiveLink="">
 				<Breadcrumbs pageTitle="Order Completion" />
 				<main id="main">
@@ -43,4 +66,4 @@ const OrderCompletionPage = () => {
 	);
 };
 
-export default OrderCompletionPage;
+export default withRouter(OrderCompletionPage);

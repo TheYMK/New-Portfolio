@@ -10,7 +10,8 @@ module.exports = withCSS({
 		DOMAIN_DEVELOPMENT: 'http://localhost:3000',
 		PRODUCTION: false,
 		DOMAIN_PRODUCTION: 'https://kaymkassai.tech',
-		DISQUS_SHORTNAME: 'portfolio-vbpayydtea'
+		DISQUS_SHORTNAME: 'portfolio-vbpayydtea',
+		FB_APP_ID: '724682705106869'
 	}
 });
 
