@@ -18,6 +18,7 @@ import { getBlogsWithCategoriesAndTags } from '../actions/blog';
 import Blog from '../components/blog/Blog';
 import { DOMAIN, FB_APP_ID } from '../config';
 import { withRouter } from 'next/router';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 const Home = ({ projects, blogs, categories, tags, totalBlogs, blogsLimit, blogsSkip, router }) => {
 	const head = () => (
@@ -52,6 +53,14 @@ const Home = ({ projects, blogs, categories, tags, totalBlogs, blogsLimit, blogs
 		<React.Fragment>
 			{head()}
 			<Layout headerStyle="header-transparent" headerActiveLink="home">
+				<MessengerCustomerChat
+					pageId="100162721696650"
+					appId={`${FB_APP_ID}`}
+					themeColor="#f56a6a"
+					loggedInGreeting="Hi! How can I help you?"
+					loggedOutGreeting="Hi! How can I help you?"
+					shouldShowDialog={true}
+				/>
 				<Hero />
 				<main id="main">
 					<About />

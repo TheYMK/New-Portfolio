@@ -9,6 +9,7 @@ import BlogItem from '../../components/blog/BlogItem';
 import { DOMAIN, FB_APP_ID } from '../../config';
 import { withRouter } from 'next/router';
 import Head from 'next/head';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 const BlogPage = ({ blog, router, params }) => {
 	const [ relatedBlogs, setRelatedBlogs ] = useState([]);
@@ -62,6 +63,14 @@ const BlogPage = ({ blog, router, params }) => {
 		<React.Fragment>
 			{head()}
 			<Layout headerStyle="" headerActiveLink="">
+				<MessengerCustomerChat
+					pageId="100162721696650"
+					appId={`${FB_APP_ID}`}
+					themeColor="#f56a6a"
+					loggedInGreeting="Hi! How can I help you?"
+					loggedOutGreeting="Hi! How can I help you?"
+					shouldShowDialog={true}
+				/>
 				<Breadcrumbs pageTitle="Blog Details" />
 				<main id="main">
 					<BlogDetails blog={blog} />

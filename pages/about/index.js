@@ -32,6 +32,7 @@ const AboutMePage = ({ router }) => {
 	);
 	return (
 		<React.Fragment>
+			{head()}
 			<Layout headerStyle="" headerActiveLink="">
 				<MessengerCustomerChat
 					pageId="100162721696650"

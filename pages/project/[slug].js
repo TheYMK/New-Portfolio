@@ -8,6 +8,7 @@ import { getSingleProject, getRelatedProject } from '../../actions/project';
 import RelatedProjects from '../../components/portfolio/RelatedProjects';
 import { DOMAIN, FB_APP_ID } from '../../config';
 import { withRouter } from 'next/router';
+import MessengerCustomerChat from 'react-messenger-customer-chat';
 
 const ProjectPage = ({ project, relatedProjects, router, params }) => {
 	const head = () => (
@@ -38,6 +39,14 @@ const ProjectPage = ({ project, relatedProjects, router, params }) => {
 		<React.Fragment>
 			{head()}
 			<Layout headerStyle="" headerActiveLink="">
+				<MessengerCustomerChat
+					pageId="100162721696650"
+					appId={`${FB_APP_ID}`}
+					themeColor="#f56a6a"
+					loggedInGreeting="Hi! How can I help you?"
+					loggedOutGreeting="Hi! How can I help you?"
+					shouldShowDialog={true}
+				/>
 				<Breadcrumbs pageTitle="Portfolio Details" />
 				<main id="main">
 					<PortfolioDetails project={project} />

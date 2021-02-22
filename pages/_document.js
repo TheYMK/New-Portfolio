@@ -48,6 +48,10 @@ class MyDocument extends Document {
 					<Main />
 					<NextScript />
 
+					<script async defer src="https://scripts.simpleanalyticscdn.com/latest.js" />
+					<noscript>
+						<img src="https://queue.simpleanalyticscdn.com/noscript.gif" alt="" />
+					</noscript>
 					<script src="/static/vendor/jquery/jquery.min.js" />
 					<script src="/static/vendor/bootstrap/js/bootstrap.bundle.min.js" />
 					<script src="/static/vendor/jquery.easing/jquery.easing.min.js" />
