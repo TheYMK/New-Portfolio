@@ -41,7 +41,7 @@ const PortfolioDetails = ({ project }) => {
 						</div> */}
 					</Slider>
 
-					<div className="portfolio-info">
+					<div className="portfolio-info text-center mt-3">
 						<h3>Project information</h3>
 						<ul>
 							<li>
@@ -54,7 +54,10 @@ const PortfolioDetails = ({ project }) => {
 								<strong>Project date</strong>: {project.date}
 							</li>
 							<li>
-								<strong>Project URL</strong>: <a href={project.url}>{project.url}</a>
+								<strong>Project URL</strong>:{' '}
+								<a href={project.url} target="blank">
+									{project.url}
+								</a>
 							</li>
 						</ul>
 					</div>

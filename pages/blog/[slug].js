@@ -33,7 +33,7 @@ const BlogPage = ({ blog, router, params }) => {
 			<meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
 			<meta name="description" content={`${blog.mdesc}...`} />
 			<link rel="canonical" href={`${DOMAIN}/blog/${params.slug}`} />
-			<meta property="og:title" content={`What I've done | Kaym Kassai`} />
+			<meta property="og:title" content={`${blog.title} | Kaym Kassai`} />
 			<meta property="og:description" content={`${blog.mdesc}...`} />
 			<meta property="og:type" content="website" />
 			<meta property="og:url" content={`${DOMAIN}/blog/${params.slug}`} />

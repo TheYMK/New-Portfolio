@@ -32,7 +32,7 @@ const BlogDetails = ({ blog }) => {
 						)}
 					</Slider>
 
-					<div className="portfolio-info">
+					<div className="portfolio-info text-center mt-3">
 						<h3>Blog information</h3>
 						<ul>
 							<li>

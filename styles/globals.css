@@ -1502,12 +1502,12 @@ section {
 
 .portfolio-details .portfolio-info {
   padding: 30px;
-  position: absolute;
+  /* position: absolute;
   right: 0;
-  bottom: -70px;
+  bottom: -70px; */
   background: #fff;
   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-  z-index: 2;
+  
 }
 
 .portfolio-details .portfolio-info h3 {
