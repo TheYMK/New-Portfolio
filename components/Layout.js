@@ -39,7 +39,7 @@ const Layout = ({ children, headerStyle, headerActiveLink }) => {
 	return (
 		<React.Fragment>
 			<Header headerStyle={headerStyle} headerActiveLink={headerActiveLink} />
-			<ToastContainer />
+			<ToastContainer autoClose={10000} />
 			{children}
 
 			<Footer />
