@@ -69,7 +69,7 @@ const BlogPage = ({ blog, router, params }) => {
 					themeColor="#f56a6a"
 					loggedInGreeting="Hi! How can I help you?"
 					loggedOutGreeting="Hi! How can I help you?"
-					shouldShowDialog={true}
+					shouldShowDialog={false}
 				/>
 				<Breadcrumbs pageTitle="Blog Details" />
 				<main id="main">

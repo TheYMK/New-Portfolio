@@ -45,7 +45,7 @@ const ProjectPage = ({ project, relatedProjects, router, params }) => {
 					themeColor="#f56a6a"
 					loggedInGreeting="Hi! How can I help you?"
 					loggedOutGreeting="Hi! How can I help you?"
-					shouldShowDialog={true}
+					shouldShowDialog={false}
 				/>
 				<Breadcrumbs pageTitle="Portfolio Details" />
 				<main id="main">
